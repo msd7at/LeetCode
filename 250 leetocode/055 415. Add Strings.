@@ -1,0 +1,42 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        ans=""
+        l1=len(num1)-1
+        l2=len(num2)-1
+        i=l1
+        j=l2
+        c=0
+        while i>-1 or j>-1:
+            if i>-1 and j>-1:
+                ia=int(num1[i])+int(num2[j])+c
+                ans= str(ia%10)+ans
+                
+                if ia>9:
+                    
+                    c=ia//10
+                else:
+                    c=0
+                i-=1
+                j-=1
+            elif i>-1:
+                ia=int(num1[i])+c
+                ans= str(ia%10)+ans
+                if ia>9:
+                    
+                    c=ia//10
+                else:
+                    c=0
+                i-=1
+            else:
+                ia=int(num2[j])+c
+                ans= str(ia%10)+ans
+                if ia>9:
+                    
+                    c=ia//10
+                else:
+                    c=0
+                j-=1
+            # print(ans)
+        if c!=0:
+            return str(c)+ans
+        return ans
